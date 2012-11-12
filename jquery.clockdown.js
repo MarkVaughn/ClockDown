@@ -34,6 +34,8 @@
                 minutes = Math.round(seconds / 60),
                 hours = Math.floor(minutes / 60),
                 days = Math.floor(hours / 24),
+                weeks = Math.floor(days/ 7),
+                months= Math.floor(days/ 30),
                 years = days / 365,
                 number = 0,
                 unit = null,
@@ -50,10 +52,22 @@
                 unit = hours === 1 ? 'hour' : 'hours';
                 number = hours;
                 degrees = 360 * number / 24;
-            } else if (days < 30) {
+            } else if (days < 7) {
                 unit = days === 1 ? 'day' : 'days';
                 number = days;
-                degrees = 360 * number / 30;
+                degrees = 360 * number / 7;
+            } else if (weeks < 5) {
+                unit = weeks === 1 ? 'week' : 'weeks';
+                number = weeks ;
+                degrees = 360 * number / 4;
+            } else if (months < 12) {
+                unit = months === 1 ? 'month' : 'months';
+                number = months ;
+                degrees = 360 * months / 12;
+            }else{
+                unit = years=== 1 ? 'year' : 'years';
+                number = years;
+                degrees = 360 * number / 4;
             }
             return {
                 number: number,
@@ -74,18 +88,25 @@
                 date = $.clockdown.parse($this.attr('datetime')),
                 relativeObject = $.clockdown.relativeObject(date),
                 r = s.radius,
-                $pie = $('<div class=clockdown-pie/>').html('<div class=clockdown-hold><div class=clockdown-fill/><div class=clockdown-remain/></div><div class=clockdown-time><div class=clockdown-number/><div class=clockdown-unit/></div>');
+                rW = s.ringWidth,
+                $pie = $('<div class=clockdown-pie/>').html('<div class=clockdown-hold><div class=clockdown-fill/><div class=clockdown-piece/></div><div class=clockdown-inner/><div class=clockdown-time><div class=clockdown-number/><div class=clockdown-unit/></div>');
+            if( rW > 0 && r > rW){
+                $pie.find('.clockdown-inner').css({width: (r-rW) *2,height: (r-rW) *2, borderRadius: (r-rW), top: rW, left: rW});
+            } else{
+                $pie.find('.clockdown-inner').remove();
+            }
             $this.hide();
             $this.before($pie.css({
                 width: r * 2,
                 height: r * 2,
-                borderRadius: r
+                borderRadius: r + s.borderSize,
+                borderSize: s.borderSize
             }));
-            $pie.find('.clockdown-hold, .clockdown-remain, .clockdown-fill').css({
+            $pie.find('.clockdown-hold, .clockdown-piece, .clockdown-fill').css({
                 width: r * 2,
                 height: r * 2,
                 clip: relativeObject.degrees <= 180 ? 'rect(0,' + r * 2 + 'px,' + r * 2 + 'px,' + r + 'px)' : null
-            }).filter('.clockdown-remain').css({
+            }).filter('.clockdown-piece').css({
                 clip: 'rect(0,' + r + 'px,' + r * 2 + 'px,0)',
                 transform: 'rotate(' + relativeObject.degrees + 'deg)'
             });
@@ -107,7 +128,3 @@
         });
     };
 })(jQuery);
-
-$('.upcoming').clockdown({
-    radius: 30
-});
