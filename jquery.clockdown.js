@@ -105,13 +105,14 @@
             $pie.find('.clockdown-hold, .clockdown-piece, .clockdown-fill').css({
                 width: r * 2,
                 height: r * 2,
+                borderRadius: r,
                 clip: relativeObject.degrees <= 180 ? 'rect(0,' + r * 2 + 'px,' + r * 2 + 'px,' + r + 'px)' : null
             }).filter('.clockdown-piece').css({
                 clip: 'rect(0,' + r + 'px,' + r * 2 + 'px,0)',
                 transform: 'rotate(' + relativeObject.degrees + 'deg)'
             });
             $pie.find('.clockdown-fill').css({
-                marginLeft: r
+                clip: 'rect(0,' + r * 2 + 'px,' + r * 2 + 'px,' + r + 'px)', 
             });
             if (relativeObject.degrees <= 180) {
                 $pie.find('.clockdown-fill').remove()
