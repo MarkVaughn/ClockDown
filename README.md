@@ -4,7 +4,7 @@ ClockDown
 Turn upcoming times into funky countdown clocks
 
 You can fiddle here
-http://jsfiddle.net/IfTrueElseFalse/QfdEd/33/
+http://jsfiddle.net/IfTrueElseFalse/QfdEd/34/
 
 parameters
 
