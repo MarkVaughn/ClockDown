@@ -3,21 +3,23 @@
 * to an upcomming time in the datetime field of a <time> tag
 *
 * @name clockdown
-* @version 0.1
+* @version 0.2
 * @requires jQuery v1.2.3+
 * @author Mark Vaughn
 * @license MIT License - http://www.opensource.org/licenses/mit-license.php
 *
 * Inspirations and parse code from https://github.com/rmm5t/jquery-timeago
 * For usage and examples, visit:
-* http://jsfiddle.net/IfTrueElseFalse/QfdEd/28/
+* http://jsfiddle.net/IfTrueElseFalse/QfdEd/33/
 *
 */
 (function($) {
     $.clockdown = {};
     defaults = {
         settings: {
-            radius: 30
+            radius: 30,
+            borderSize: 0,
+            ringWidth:0
         },
         parse: function(iso8601) {
             var s = $.trim(iso8601);

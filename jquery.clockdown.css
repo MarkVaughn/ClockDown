@@ -1,20 +1,31 @@
-.clockdown-hold, .clockdown-piece, .clockdown-fill, .clockdown-time{
+.clockdown-hold, .clockdown-piece, .clockdown-fill, .clockdown-time, .clockdown-inner{
     position:absolute; /* essential */
 }
 .clockdown-pie{
     position:relative; /* essential */
     overflow:hidden; /* essential */
     /* Pie Style --- you can change everything from here on*/
-    background-color:red;
+    background-color:#ddd;
 }
+
 .clockdown-piece, .clockdown-fill{
     /* piece color */
     background-color: green;
 }
 /* Text Styles */
 .clockdown-time{
-    color: #fff;
+    color: #333;
     font-family: Helvetica, Arial;
     text-align:center;
+    font-size: 10px;
     line-height: 1.1em;
+}
+
+.clockdown-number{
+    font-size:14px;
+    font-weight:bold;
+}
+.clockdown-inner{
+    /* Optional backdrop for text*/
+    background-color:#ddd;
 }
