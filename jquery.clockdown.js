@@ -10,7 +10,7 @@
 *
 * Inspirations and parse code from https://github.com/rmm5t/jquery-timeago
 * For usage and examples, visit:
-* http://jsfiddle.net/IfTrueElseFalse/QfdEd/33/
+* https://github.com/MarkVaughn/ClockDown
 *
 */
 (function($) {
@@ -18,7 +18,7 @@
     defaults = {
         settings: {
             radius: 30,
-            borderSize: 0,
+            borderWidth: 0,
             ringWidth:0
         },
         parse: function(iso8601) {
@@ -34,7 +34,7 @@
                 minutes = Math.round(seconds / 60),
                 hours = Math.floor(minutes / 60),
                 days = Math.floor(hours / 24),
-                weeks = Math.floor(days/ 7),
+                weeks = Math.floor(days/ 7),                
                 months= Math.floor(days/ 30),
                 years = days / 365,
                 number = 0,
@@ -90,6 +90,7 @@
                 r = s.radius,
                 rW = s.ringWidth,
                 $pie = $('<div class=clockdown-pie/>').html('<div class=clockdown-hold><div class=clockdown-fill/><div class=clockdown-piece/></div><div class=clockdown-inner/><div class=clockdown-time><div class=clockdown-number/><div class=clockdown-unit/></div>');
+                
             if( rW > 0 && r > rW){
                 $pie.find('.clockdown-inner').css({width: (r-rW) *2,height: (r-rW) *2, borderRadius: (r-rW), top: rW, left: rW});
             } else{
@@ -99,8 +100,8 @@
             $this.before($pie.css({
                 width: r * 2,
                 height: r * 2,
-                borderRadius: r + s.borderSize,
-                borderSize: s.borderSize
+                borderRadius: r + s.borderWidth,
+                borderWidth: s.borderWidth
             }));
             $pie.find('.clockdown-hold, .clockdown-piece, .clockdown-fill').css({
                 width: r * 2,

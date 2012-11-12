@@ -6,6 +6,7 @@
     overflow:hidden; /* essential */
     /* Pie Style --- you can change everything from here on*/
     background-color:#ddd;
+    border: 0 solid #999;
 }
 
 .clockdown-piece, .clockdown-fill{
