@@ -20,6 +20,6 @@ And the html5 time tag using datetime parameter
     <time datetime='2012-11-13T20:00Z'>November 13th, 2012 at 8<time>
 
 And voila!
-![Preview](//raw.github.com/MarkVaughn/ClockDown/master/jquery.clockdown.png)
+![Preview](https://raw.githubusercontent.com/MarkVaughn/ClockDown/master/jquery.clockdown.png)
 
 [![endorse](http://api.coderwall.com/moak/endorsecount.png)](http://coderwall.com/moak)
